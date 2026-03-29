@@ -22,7 +22,7 @@ def mercado_livre_strategy(material_url: MaterialUrl, page: Page):
 
     price = float(f"{re.sub(r'[^\d]', "", real)}.{cents}")
 
-    print(f"    {colors.cyan}├─{colors.reset} 🧩 Valores extraídos: R$ {price} centavos")
+    print(f"    {colors.cyan}├─{colors.reset} 🧩 Valores extraídos: R$ {price}")
 
     material_url.price = price
 
