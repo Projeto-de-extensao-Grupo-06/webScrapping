@@ -1,0 +1,21 @@
+# Controle de versão
+.git
+.gitignore
+
+# Ambiente virtual Python (dependências são reinstaladas no build)
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Variáveis de ambiente locais (injete via --env-file em produção)
+.env
+
+# Artefatos de editor e OS
+.vscode/
+.idea/
+*.DS_Store
+
+# Documentação (não necessária dentro do container)
+README.md
