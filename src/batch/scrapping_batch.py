@@ -59,7 +59,7 @@ class ScrappingBatch:
         if self.next_cursor is not None:
             if page is None:
                 print(f"{colors.cyan}🌐 [BROWSER] Launching Chromium instance...{colors.reset}")
-                browser = self.scrapping_instance.chromium.launch(headless=True)
+                browser = self.scrapping_instance.chromium.launch(headless=False)
                 print(f"   └── {colors.green}IDLE{colors.reset} | Browser engine started successfully.")
                 ctx = browser.new_context(
                     user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
