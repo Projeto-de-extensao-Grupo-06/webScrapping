@@ -1,5 +1,5 @@
 from typing import List, Any
-
+from src.logging.colors import colors
 import mysql.connector
 from dotenv import load_dotenv
 from os import getenv
@@ -7,15 +7,23 @@ from os import getenv
 load_dotenv()
 
 def _get_connection():
-    connection = mysql.connector.connect(
-        user=getenv("DB_USER"),
-        password=getenv("DB_PASSWORD"),
-        host=getenv("DB_HOST"),
-        database=getenv("DB_NAME"),
-        port=int(getenv("DB_PORT"))
-    )
+    try:
+        connection = mysql.connector.connect(
+            user=getenv("DB_USER"),
+            password=getenv("DB_PASSWORD"),
+            host=getenv("DB_HOST"),
+            database=getenv("DB_NAME"),
+            port=int(getenv("DB_PORT"))
+        )
 
-    return connection
+        print(f"{colors.cyan}🗄️  [DATABASE] Connection established successfully{colors.reset}")
+        return connection
+
+    except Exception as e:
+        print(f"{colors.red}❌ [DATABASE] Failed to connect to MySQL{colors.reset}")
+        print(f"{colors.cyan}   └── {colors.bold}Error: {str(e)}{colors.reset}\n")
+        exit(1)
+
 
 def select(query, parameters):
     with _get_connection() as connection:
